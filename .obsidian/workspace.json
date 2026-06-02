@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "3-总结/2026-06-02-join函数用法.md",
+                "file": "agent.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-02-join函数用法"
+              "title": "agent"
             }
           }
         ]
@@ -185,9 +185,9 @@
   },
   "active": "79e7d0ea8e28303d",
   "lastOpenFiles": [
+    "3-总结/2026-06-02-join函数用法.md",
     "3-总结/strip和split函数总结.md",
     "4-计划/Day05-Excel自动化基础.md",
-    "3-总结/2026-06-02-join函数用法.md",
     "4-计划/Day04-TXT和CSV文件读写.md",
     "4-计划/Day15-作品集和闲鱼接单准备.md",
     "4-计划/Day14-批量文件整理助手.md",
