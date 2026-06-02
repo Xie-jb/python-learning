@@ -9,6 +9,10 @@
 import os
 from pathlib import Path
 foldPath = Path("./2-file")
+os.makedirs("./2-file/txt",exist_ok=True)
+os.makedirs("./2-file/xlsx",exist_ok=True)
+os.makedirs("./2-file/csv",exist_ok=True)
+os.makedirs("./2-file/c",exist_ok=True)
 index = 0
 for file in foldPath.iterdir():
     if file.suffix == ".c":
