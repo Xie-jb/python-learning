@@ -15,7 +15,7 @@ with open("customers.csv","r",encoding="utf-8") as file:
                 #print(dataEdit)
     print(writeLine)
     
-    with open("result.csv","w",encoding="utf-8") as wfile:
+    with open("result.csv","w",encoding="utf-8-sig") as wfile:
         wfile.write("".join(writeLine))
 
 
