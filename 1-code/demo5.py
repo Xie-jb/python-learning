@@ -7,19 +7,31 @@
 # 4. 生成文件清单 TXT 或 Excel。
 
 import os
+import shutil
 from pathlib import Path
-foldPath = Path("./2-file")
-os.makedirs("./2-file/txt",exist_ok=True)
-os.makedirs("./2-file/xlsx",exist_ok=True)
-os.makedirs("./2-file/csv",exist_ok=True)
-os.makedirs("./2-file/c",exist_ok=True)
+rPath = Path(__file__).resolve().parent.parent / "2-file"
+
+Path(rPath / "txt").mkdir(exist_ok=True)
+Path(rPath / "xlsx").mkdir(exist_ok=True)
+Path(rPath / "csv").mkdir(exist_ok=True)
+Path(rPath / "c").mkdir(exist_ok=True)
+
+c_path = rPath / "c"
+print(c_path)
 index = 0
-for file in foldPath.iterdir():
+for file in rPath.iterdir():
     if file.suffix == ".c":
         index += 1
         new_name = f"test_{index:03d}{file.suffix}"
-        new_path = foldPath / new_name
+        new_path = rPath / new_name
         file.rename(new_path)
+        shutil.move(file, c_path)
+    elif file.suffix.lower() == ".txt":
+        suffix = file.suffix.lstrip(".").lower()
+        new_path = rPath / suffix
+        print(new_path)
+        shutil.move(file,new_path)
+
     #print(file)
 
 
