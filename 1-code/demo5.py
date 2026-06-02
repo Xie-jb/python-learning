@@ -9,6 +9,7 @@
 import os
 import shutil
 from pathlib import Path
+from openpyxl import load_workbook, Workbook
 rPath = Path(__file__).resolve().parent.parent / "2-file"
 
 Path(rPath / "txt").mkdir(exist_ok=True)
@@ -17,21 +18,40 @@ Path(rPath / "csv").mkdir(exist_ok=True)
 Path(rPath / "c").mkdir(exist_ok=True)
 
 c_path = rPath / "c"
-print(c_path)
 index = 0
+# for file in rPath.iterdir():
+#     if file.suffix == ".c":
+#         index += 1
+#         new_name = f"test_{index:03d}{file.suffix}"
+#         new_path = rPath / new_name
+#         file.rename(new_path)
+#         shutil.move(file, c_path)
+#     elif file.suffix.lower() == ".txt":
+#         suffix = file.suffix.lstrip(".").lower()
+#         new_path = rPath / suffix
+#         #print(new_path)
+#         shutil.move(file,new_path)
+#     elif file.suffix.lower() == ".xlsx":
+#         suffix = file.suffix.lstrip(".").lower()
+#         new_path = rPath / suffix
+#         #print(new_path)
+#         shutil.move(file,new_path)
+#     elif file.suffix.lower() == ".csv":
+#         suffix = file.suffix.lstrip(".").lower()
+#         new_path = rPath / suffix
+#         #print(new_path)
+#         shutil.move(file,new_path)
+wb = Workbook()
+fileNum = wb.active
 for file in rPath.iterdir():
-    if file.suffix == ".c":
-        index += 1
-        new_name = f"test_{index:03d}{file.suffix}"
-        new_path = rPath / new_name
-        file.rename(new_path)
-        shutil.move(file, c_path)
-    elif file.suffix.lower() == ".txt":
-        suffix = file.suffix.lstrip(".").lower()
-        new_path = rPath / suffix
-        print(new_path)
-        shutil.move(file,new_path)
+    if not file.is_file():
+        fpath = rPath / file
+        for fileData in fpath.iterdir():
+            fileNum.append([fileData.name,str(fileData)])
+    else:
+        fileNum.append([file.name,str(file)])
+wb.save(rPath / "fileTotal.xlsx")
 
-    #print(file)
+
 
 
