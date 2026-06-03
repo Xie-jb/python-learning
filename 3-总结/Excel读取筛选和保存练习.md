@@ -18,7 +18,7 @@
 
 ### `load_workbook()`
 
-用来打开一个已有的 Excel 文件。
+用来打开一个已有的 Excel 文件。s
 
 ```python
 wb = load_workbook(r"C:\...\orders.xlsx")
@@ -115,4 +115,3 @@ wbNew.save(r"C:\...\not_pay.xlsx")
 ## 小提醒
 
 代码里变量名用了 `str`，虽然可以运行，但不太推荐。因为 `str` 是 Python 自带的类型名，建议改成 `value` 更清楚。
-
