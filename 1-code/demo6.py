@@ -18,7 +18,9 @@ wbOut2 = Workbook()
 fileOut2 = wbOut2.active
 
 regions = set()
-
+region_order = {}
+states = set()
+order_state = {}
 for row in file.iter_rows(min_row=2,values_only=True):
     region = row[3]
     regions.add(region)
@@ -28,7 +30,21 @@ for row in file.iter_rows(min_row=2,values_only=True):
         elif str == "未付款":
             fileOut2.append(row)
 
-print(regions)
+for row in file.iter_rows(min_row=2,values_only=True):
+    region = row[3]
+    if region not in region_order:
+        region_order[region] = []
+    region_order[region].append(row)
+
+for row in file.iter_rows(min_row=2,values_only=True):
+    state = row[4]
+    states.add(state)
+    if state not in order_state:
+        order_state[state] = []
+    order_state[state].append(row)
+
+print(region_order["华南"])
+print(states)
 
 wbOut1.save(r"C:\codex\2026.5.31-python-learning-demo1\2-file\pay.xlsx")
 wbOut2.save(r"C:\codex\2026.5.31-python-learning-demo1\2-file\not_pay.xlsx")
